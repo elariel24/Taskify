@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true" color="dark">
+  <h1>Login</h1>
+  <div class="container">
+   
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-input
+            #email required
+            type="text"
+            placeholder="Correo Electronico"
+            fill="outline"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-input
+            #password required
+            type="password"
+            placeholder="Contraseña"
+            fill="outline"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" (click)="logIn(email, password)"> Iniciar sesion </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>Taskify</ion-title>
+    <ion-icon
+      slot="end"
+      name="person"
+      style="padding-right: 30px"
+      [routerLink]="['/profile']"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-input placeholder="Escriba la nueva tarea"></ion-input>
+          <ion-icon slot="end" name="add"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-label>Checkbox</ion-label>
+            <ion-checkbox slot="start"></ion-checkbox>
+            <ion-icon name="trash" slot="end"></ion-icon>
+          </ion-item> 
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div>
+    <h1 style="margin-left: 15px; font-size: 16px; font-weight: bold;">Completados</h1>
+    <ion-list>
+     
+      <ion-item>
+        <ion-icon name="checkmark" color="success" slot="end"></ion-icon>
+        <ion-label>Awesome Label</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="center">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
