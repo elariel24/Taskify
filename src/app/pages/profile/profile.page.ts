@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../../services/authentication.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +9,15 @@ import { AuthenticationService } from "../../services/authentication.service";
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
   SignOut(){
     this.authService.SignOut();
+  }
+
+  passReset(){
+    this.router.navigate(['/password-reseet']);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Tasks } from '../../interfaces/tasks';
 import { TasksService } from '../../services/tasks.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-area-principal',
@@ -10,15 +11,16 @@ import { TasksService } from '../../services/tasks.service';
 })
 export class AreaPrincipalPage implements OnInit {
   Tareas: any = [];
-   currentUserID = this.authService.userData.uid;
+  public currentUserID =  this.authService.userData.uid;
   constructor(
     public authService: AuthenticationService,
-    public taskService: TasksService
-  ) {}
+    public taskService: TasksService,
+    private router:Router,
+    
+  ) { }
 
   ngOnInit() {
-    console.log(this.currentUserID);
-    this.fetchTask();
+     this.fetchTask();
     let taskRes = this.taskService.getTaskList();
     taskRes.snapshotChanges().subscribe((res) => {
       this.Tareas = [];
@@ -43,5 +45,16 @@ export class AreaPrincipalPage implements OnInit {
     if (window.confirm('Deseas eliminar esta Tarea?')) {
       this.taskService.eliminarTarea(id);
     }
+  }
+  newTask(){
+    this.router.navigate(['/new-task/']);
+  }
+
+  editTask(id: string){
+    this.router.navigate(['/edit-task/'+ id]);
+  }
+
+  profileGo(){
+    this.router.navigate(['/profile']);
   }
 }

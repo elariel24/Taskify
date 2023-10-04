@@ -5,41 +5,39 @@
       slot="end"
       name="person"
       style="padding-right: 30px"
-      [routerLink]="['/profile']"
+      (click)="profileGo()"
     ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list class="ios list-ios hydrated">
-    <ion-list-header class="ios hydrated"> Tareas Pendientes </ion-list-header>
-    <ion-item *ngFor="let tarea of Tareas" class="user-list">
-      <ion-label *ngIf="tarea.uid === currentUserID ">
-        <h2><ion-icon name="person"></ion-icon> {{tarea.titulo}}</h2>
-        <p><ion-icon name="call"></ion-icon> {{tarea.nota}}</p>
-        <p><ion-icon name="call"></ion-icon> </p>
-        <ion-item>
-          <ion-badge slot="start">{{tarea.estado}}</ion-badge>   
-        </ion-item>
-      </ion-label>
-      
-      <div class="item-note" item-end>
-        <button ion-button clear [routerLink]="['/edit-task/', tarea.$key]">
-          <ion-icon name="create" style="zoom: 2"></ion-icon>
-        </button>
-        <button ion-button clear (click)="deleteTask(tarea.$key)">
-          <ion-icon name="trash" style="zoom: 2"></ion-icon>
-        </button>
-      </div>
 
-    </ion-item>
-  </ion-list>
+<ion-list>
+  <ion-card *ngFor="let tarea of Tareas">
+    <ion-card-header>
+    <ion-card-title>{{tarea.titulo}}</ion-card-title>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+  </ion-card-header>
 
+  <ion-card-content>
+    {{tarea.nota}}
+  </ion-card-content>
+  <div class="item-note" item-end>
+    <ion-button fill="clear"  (click)="editTask(tarea.$key)"> <ion-icon name="create" style="zoom: 1"></ion-icon></ion-button>
+    <ion-button fill="clear" (click)="deleteTask(tarea.$key)"> <ion-icon name="trash" style="zoom: 1"></ion-icon></ion-button>
+  </div>
+</ion-card>
+
+</ion-list>
 
   
 
+
+
+
+
   <ion-fab slot="fixed" vertical="bottom" horizontal="center">
-    <ion-fab-button [routerLink]="['/new-task/']">
+    <ion-fab-button (click)="newTask()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
