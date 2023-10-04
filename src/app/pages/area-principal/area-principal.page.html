@@ -11,38 +11,35 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated"> Tareas Pendientes </ion-list-header>
+    <ion-item *ngFor="let tarea of Tareas" class="user-list">
+      <ion-label *ngIf="tarea.uid === currentUserID ">
+        <h2><ion-icon name="person"></ion-icon> {{tarea.titulo}}</h2>
+        <p><ion-icon name="call"></ion-icon> {{tarea.nota}}</p>
+        <p><ion-icon name="call"></ion-icon> </p>
         <ion-item>
-          <ion-input placeholder="Escriba la nueva tarea"></ion-input>
-          <ion-icon slot="end" name="add"></ion-icon>
+          <ion-badge slot="start">{{tarea.estado}}</ion-badge>   
         </ion-item>
-      </ion-col>
-      <ion-col size="12">
-        <ion-list>
-          <ion-item>
-            <ion-label>Checkbox</ion-label>
-            <ion-checkbox slot="start"></ion-checkbox>
-            <ion-icon name="trash" slot="end"></ion-icon>
-          </ion-item> 
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div>
-    <h1 style="margin-left: 15px; font-size: 16px; font-weight: bold;">Completados</h1>
-    <ion-list>
-     
-      <ion-item>
-        <ion-icon name="checkmark" color="success" slot="end"></ion-icon>
-        <ion-label>Awesome Label</ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
+      </ion-label>
+      
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/edit-task/', tarea.$key]">
+          <ion-icon name="create" style="zoom: 2"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteTask(tarea.$key)">
+          <ion-icon name="trash" style="zoom: 2"></ion-icon>
+        </button>
+      </div>
+
+    </ion-item>
+  </ion-list>
+
+
+  
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="center">
-    <ion-fab-button>
+    <ion-fab-button [routerLink]="['/new-task/']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

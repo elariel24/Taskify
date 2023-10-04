@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tasks } from '../interfaces/tasks';
+
 import {
   AngularFireDatabase,
   AngularFireList,
@@ -14,34 +15,38 @@ export class TasksService {
   taskRef: AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) {}
+
   // crear nueva tarea
   crearTarea(task: Tasks) {
     return this.taskListRef.push({
       titulo: task.titulo,
-      descripcion: task.descripcion,
-      estado: task.titulo
+      nota: task.nota,
+      estado: task.estado,
+      uid: task.uid,
     });
   }
 
-  // Get Single
+  // mostrar un tarea
   getTask(id: string) {
     this.taskRef = this.db.object('/task/' + id);
     return this.taskRef;
   }
-  // Get List
+
+  // obtener todas las tareas
   getTaskList() {
     this.taskListRef = this.db.list('/task');
     return this.taskListRef;
   }
-  // Update
+  // actualizar
   updateTask(id: any, task: Tasks) {
     return this.taskRef.update({
       titulo: task.titulo,
-      descripcion: task.descripcion,
-      estado: task.titulo
+      nota: task.nota,
+      estado: task.estado,
+      uid: task.uid,
     });
   }
-  // Delete
+  // eliminar
   eliminarTarea(id: string) {
     this.taskRef = this.db.object('/task/' + id);
     this.taskRef.remove();

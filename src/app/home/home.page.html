@@ -17,13 +17,13 @@
       </ion-row>
       <ion-row>
         <ion-col size="12"
-          ><ion-button expand="block" class="create" [routerLink]="['/register']"  >Crear Cuenta</ion-button
+          ><ion-button expand="block" class="create"  (click)="crearCuenta();">Crear Cuenta</ion-button
           ></ion-col
         >
       </ion-row>
       <ion-row>
         <ion-col size="12"
-          ><ion-button expand="block" class="enter"  [routerLink]="['/login']"
+          ><ion-button expand="block" class="enter" (click)="login()"
             >YA TIENES UNA CUENTA?</ion-button
           ></ion-col
         >

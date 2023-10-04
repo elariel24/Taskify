@@ -1,15 +1,15 @@
 <ion-content [fullscreen]="true" color="dark">
   <h1>Registrar</h1>
   <div id="container">
+
     <ion-grid>
       <ion-row>
         <ion-col size="12">
           <ion-label position="floating">Email</ion-label>
-          <ion-input
-            #email
-            required
+          <ion-input #email required
             type="text"
             placeholder="Correo Electronico"
+            
           ></ion-input>
         </ion-col>
       </ion-row>
@@ -18,9 +18,8 @@
         <ion-col size="12">
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input
-            #password
-            required
-            type="text"
+          #password required
+            type="password"
             placeholder="Contraseña"
             fill="outline"
           ></ion-input>
@@ -28,9 +27,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-button expand="block"(click)="signUp(email, password)">
-            Crear cuenta
-          </ion-button>
+          <ion-button expand="block"  (click)="signUp(email, password)"> Crear cuenta </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

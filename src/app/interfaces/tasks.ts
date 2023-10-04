@@ -1,6 +1,7 @@
 export interface Tasks {
-    $key: string;
-    titulo: string;
-    descripcion: string
-    estado: string;
+    $key: String;
+    titulo: String;
+    nota: String;
+    estado: String;
+    uid: String;
 }

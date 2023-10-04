@@ -8,13 +8,12 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  constructor(
+    public authService: AuthenticationService,
+    public router: Router
+  ) {}
 
-  constructor(public authService: AuthenticationService,
-    public router: Router) { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
   logIn(email: any, password: any) {
     this.authService
       .SignIn(email.value, password.value)
@@ -30,5 +29,4 @@ export class LoginPage implements OnInit {
         window.alert(error.message);
       });
   }
-
 }

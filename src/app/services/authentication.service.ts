@@ -66,24 +66,24 @@ export class AuthenticationService {
       });
   }
 
-  // Returns true when user is looged in
+  // true cuando el usuario esta logeado
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
-  // Returns true when user's email is verified
+  // true cuando se verifica el email
   get isEmailVerified(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.emailVerified !== false ? true : false;
   }
 
-  // Sign in with Gmail
+  // Session con gmail
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
   }
 
-  // Auth providers
+  // proveedor de autenticacion
   AuthLogin(provider: any) {
     return this.ngFireAuth
       .signInWithPopup(provider)
@@ -98,7 +98,7 @@ export class AuthenticationService {
       });
   }
 
-  // Store user in localStorage
+  // Almacenar usuario en localStorage
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
       `users/${user.uid}`
@@ -115,7 +115,7 @@ export class AuthenticationService {
     });
   }
 
-  // Sign-out
+  // Desconectar
   SignOut() {
     return this.ngFireAuth.signOut().then(() => {
       localStorage.removeItem('user');

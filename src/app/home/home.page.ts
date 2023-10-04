@@ -17,4 +17,13 @@ export class HomePage implements OnInit{
     }
   }
 
+  crearCuenta(){
+    this.router.navigate(['register']);
+  }
+
+  login(){
+    this.router.navigate(['login']);
+    
+  }
+
 }

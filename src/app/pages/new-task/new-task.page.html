@@ -1,13 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>newTask</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">newTask</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list lines="full">
+    <form [formGroup]="taskForm" (ngSubmit)="formSubmit()">
+      <ion-item>
+        <ion-input
+          formControlName="titulo"
+          type="text"
+          required
+          placeholder="Titulo"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          formControlName="nota"
+          type="text"
+          [autoGrow]="true"
+          required
+          placeholder="Nota"
+        >
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-input
+          formControlName="estado"
+          type="text"
+          required
+          placeholder="Pendiente, Completado"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          formControlName="uid"
+          value=""
+        ></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block"
+            >Agregar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
 </ion-content>
