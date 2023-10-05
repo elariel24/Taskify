@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>editTask</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>Editar tarea</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,13 +17,15 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Estado</ion-label>
-        <ion-input formControlName="estado" type="text" required>
-        </ion-input>
+        <ion-select aria-label="Estado" interface="popover" placeholder="Seleccione estado" formControlName="estado">
+          <ion-select-option value="En proceso">En Proseso</ion-select-option>
+          <ion-select-option value="Realizado">Realizado</ion-select-option>
+          <ion-select-option value="Sin iniciar">Sin Iniciar</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="primary" shape="full" expand="block">Actualizar tarea</ion-button>
+          <ion-button type="submit" expand="block">Actualizar tarea</ion-button>
         </ion-col>
       </ion-row>
     </form>

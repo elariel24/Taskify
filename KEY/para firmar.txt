@@ -1,0 +1,9 @@
+hacer apk
+ionic capacitor copy android && cd android && .\gradlew assembleDebug && cd ..
+
+crear llave
+PASS-042481
+keytool -genkey -v -keystore Taskifykey.keystore -alias task-key -keyalg RSA -keysize 2048 -validity 10000
+
+
+firmar apk

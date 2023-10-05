@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <ion-title>newTask</ion-title>
+    <ion-title>Nueva Tarea</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-list lines="full">
     <form [formGroup]="taskForm" (ngSubmit)="formSubmit()">
       <ion-item>
@@ -29,25 +30,23 @@
         </ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Estado</ion-label>
-        <ion-input
-          formControlName="estado"
-          type="text"
-          required
-          placeholder="Pendiente, Completado"
-        >
-        </ion-input>
+        <ion-select aria-label="Estado" interface="popover" placeholder="Seleccione estado" formControlName="estado">
+          <ion-select-option value="En proceso">En Proseso</ion-select-option>
+          <ion-select-option value="Realizado">Realizado</ion-select-option>
+          <ion-select-option value="Sin iniciar">Sin Iniciar</ion-select-option>
+        </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item  class="ion-hide">
         <ion-input
+      
           formControlName="uid"
           value=""
         ></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="primary" shape="full" expand="block"
+          <ion-button type="submit" shape="full" expand="block"
             >Agregar</ion-button
           >
         </ion-col>

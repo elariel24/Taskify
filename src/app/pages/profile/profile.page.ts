@@ -8,16 +8,15 @@ import { Router } from "@angular/router";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  
+  constructor(public authService: AuthenticationService) { }
 
   ngOnInit() {
+    
   }
   SignOut(){
     this.authService.SignOut();
+    
   }
 
-  passReset(){
-    this.router.navigate(['/password-reseet']);
-  }
 }

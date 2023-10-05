@@ -9,12 +9,9 @@ import { AuthenticationService } from "../services/authentication.service";
 })
 export class HomePage implements OnInit{
 
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  constructor(private router: Router, public authService: AuthenticationService) {}
 
   ngOnInit() {
-    if (this.auth.isLoggedIn){
-      this.router.navigate(['area-principal']);
-    }
   }
 
   crearCuenta(){

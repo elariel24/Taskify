@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Tasks } from '../../interfaces/tasks';
 import { TasksService } from '../../services/tasks.service';
 import { Router } from "@angular/router";
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-area-principal',
@@ -11,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class AreaPrincipalPage implements OnInit {
   Tareas: any = [];
-  public currentUserID =  this.authService.userData.uid;
+   public currentUserID =  this.authService.userData.uid;
   constructor(
     public authService: AuthenticationService,
     public taskService: TasksService,
@@ -30,6 +31,7 @@ export class AreaPrincipalPage implements OnInit {
         this.Tareas.push(a as Task);
       });
     });
+
   }
 
   fetchTask() {
@@ -56,5 +58,12 @@ export class AreaPrincipalPage implements OnInit {
 
   profileGo(){
     this.router.navigate(['/profile']);
+  }
+
+  onIonInfinite(ev: any) {
+    this.fetchTask();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 }
